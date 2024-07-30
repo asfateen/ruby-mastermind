@@ -1,8 +1,8 @@
-require_relative('player.rb')
-require_relative('feedback.rb')
-require_relative('secret_code.rb')
-require_relative('game.rb')
-require_relative('mode.rb')
+require_relative('lib/player')
+require_relative('lib/feedback')
+require_relative('lib/secret_code')
+require_relative('lib/game')
+require_relative('lib/mode')
 
 
 
