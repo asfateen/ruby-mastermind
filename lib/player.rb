@@ -6,7 +6,7 @@ class Player
         if SecretCode::valid_lineup?(input)
           return input
         else
-          puts "Invalid input. Please enter exactly #{Config::NUMBER_OF_PEGS} digits, each between #{Config::PEG_RANGE.min} and #{SecretCode::Config::PEG_RANGE.max}."
+          puts "Invalid input. Please enter exactly #{Config::NUMBER_OF_PEGS} digits, each between #{Config::PEG_RANGE.min} and #{Config::PEG_RANGE.max}."
         end
       end
     end
