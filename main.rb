@@ -1,3 +1,4 @@
+require_relative('lib/config')
 require_relative('lib/player')
 require_relative('lib/feedback')
 require_relative('lib/secret_code')

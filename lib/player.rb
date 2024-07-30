@@ -1,12 +1,12 @@
 class Player
     def guess(feedback = nil)
       loop do
-        puts "Enter your guess: #{SecretCode::NUMBER_OF_PEGS} digits (#{SecretCode::PEG_RANGE}) separated by spaces"
+        puts "Enter your guess: #{Config::NUMBER_OF_PEGS} digits (#{Config::PEG_RANGE}) separated by spaces"
         input = gets.chomp.split.map { |peg| peg.to_i }
         if SecretCode::valid_lineup?(input)
           return input
         else
-          puts "Invalid input. Please enter exactly #{SecretCode::NUMBER_OF_PEGS} digits, each between #{SecretCode::PEG_RANGE.min} and #{SecretCode::PEG_RANGE.max}."
+          puts "Invalid input. Please enter exactly #{Config::NUMBER_OF_PEGS} digits, each between #{Config::PEG_RANGE.min} and #{SecretCode::Config::PEG_RANGE.max}."
         end
       end
     end
@@ -16,7 +16,7 @@ end
 class ComputerPlayer < Player
   def initialize
     @previous_guess = nil
-    @possibilities_no_duplicates = SecretCode::PEG_RANGE.to_a.permutation(SecretCode::NUMBER_OF_PEGS).to_a
+    @possibilities_no_duplicates = Config::PEG_RANGE.to_a.permutation(Config::NUMBER_OF_PEGS).to_a
   end
 
   def guess(feedback) # eliminates possible solutions based on feedback

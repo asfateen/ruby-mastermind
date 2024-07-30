@@ -1,5 +1,4 @@
 class Game
-  MAX_NUMBER_OF_GUESSES = 12
 
   def initialize(code = nil)
     @code = code ? code : SecretCode::generate_code
@@ -9,19 +8,19 @@ class Game
 
   def play(player)
     feedback = nil
-    until @solved || @number_of_guesses == MAX_NUMBER_OF_GUESSES
+    until @solved || @number_of_guesses == Config::MAX_NUMBER_OF_GUESSES
       guess = player.guess(feedback)
       puts "#{player.class} guessed: #{guess.join(' ')}"
       feedback = Game::evaluate_guess(guess, @code)
       puts feedback
       @number_of_guesses += 1
-      if feedback.correct_position == SecretCode::NUMBER_OF_PEGS
+      if feedback.correct_position == Config::NUMBER_OF_PEGS
         @solved = true
         puts "Solved!"
         puts "#{player.class} solved it in #{@number_of_guesses} guesses!"
         
       else
-        puts "#{MAX_NUMBER_OF_GUESSES - @number_of_guesses} guesses left"
+        puts "#{Config::MAX_NUMBER_OF_GUESSES - @number_of_guesses} guesses left"
       end
     end
     puts "#{player.class} out of guesses. The code was #{@code.join(' ')}" unless @solved
